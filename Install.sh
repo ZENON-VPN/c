@@ -67,7 +67,7 @@ clear
 	echo -e "\e[034;1m----SCRIPT V.1 VIP"
 	echo ""
 
-fi
+
 
 # Disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
