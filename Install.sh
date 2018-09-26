@@ -74,17 +74,7 @@ clear
 	echo ""
 	echo -e "\e[034;1m----SCRIPT V.1 VIP"
 	echo ""
-clear
-echo ""
-echo ""
-echo " เสียใจด้วย รหัสผิดว่ะ ถ้าไม่มีรหัสติดต่อแอดมินฯ เฮียเบิร์ด"
-echo ""
-echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
-echo ""
-echo ""
-rm /usr/bin/pass
-rm allvertion.sh
-exit
+
 fi
 
 # Disable ipv6
