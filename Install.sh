@@ -57,7 +57,7 @@ clear
                   .        True Wallet Account             .
                   .        =======================         .
                   .        Phone : 097-206-5255            .
-                  .        Name  : Ekkachai Chompoowiset       .
+                  .        Name  : Ekkachai Chompoowiset   .
                   ..........................................   
                                       
                            Thank You For Choice Us"
