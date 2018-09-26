@@ -27,23 +27,8 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
 if [[ $ether = "" ]]; then
         ether=eth0
-fi
-
-#SOURCE
-	source="http://เฮียเบิร์ด.com/ocspanel"
-#vps="VPS";
-
-#if [[ $vps = "VPS" ]]; then
-#	source="http://ocspanel.info"
-#else
-#	source="http://เฮียเบิร์ด.com/ocspanel"
-#fi
-
-
-# GO TO ROOT
+	fi
 cd
-
-#REGISTER CONFIG
 clear
  echo ""
           echo -e "\e[031;1m     
@@ -60,14 +45,13 @@ clear
                   .        Name  : Ekkachai Chompoowiset   .
                   ..........................................   
                                       
-                           Thank You For Choice TH"
+                           Thank You For Choice TH
+                              SCRIPT V.1 VIP
+                                   
+                               ( ใส่รหัสผ่านติดตั้ง... )"
 			
 	echo ""
-	echo -e "\e[034;1m----SCRIPT V.1 VIP"
-	echo ""
-	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
-	echo ""
-read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
+    read -p "โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
 wget -q -O /usr/bin/pass www.zenon-vpn.net/www.zenon-vpn.net.txt
 if ! grep -w -q $passwds /usr/bin/pass; then
 clear
@@ -81,6 +65,7 @@ echo ""
 rm /usr/bin/pass
 rm Install.sh
 exit
+
 fi
 
 # Disable ipv6
@@ -308,22 +293,18 @@ END
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
-# install stunnel4
-apt-get -y install stunnel4
-wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/ZENON-VPN/autoscript/master/updates/stunnel.pem"
-wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/ZENON-VPN/autoscript/master/req/stunnel.conf"
-sed -i $MYIP2 /etc/stunnel/stunnel.conf
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-service stunnel4 restart
+#installing webmin
+wget http://www.webmin.com/jcameron-key.asc
+apt-key add jcameron-key.asc
+echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+echo "deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib" >> /etc/apt/sources.list
+apt-get update
+apt-get -y install webmin
 
-# install webmin
-cd
-wget "http://script.hostingtermurah.net/repo/webmin_1.801_all.deb"
-dpkg --install webmin_1.801_all.deb;
-apt-get -y -f install;
-sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
-rm /root/webmin_1.801_all.deb
-service webmin restart
+#disable webmin https
+sed -i "s/ssl=1/ssl=0/g" /etc/webmin/miniserv.conf
+/etc/init.d/webmin restart
+service vnstat restart
 
 #Setting IPtables
 cat > /etc/iptables.up.rules <<-END
