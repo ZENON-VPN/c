@@ -191,12 +191,25 @@ server {
 END4
 /etc/init.d/nginx restart
 
-# Install Vnstat
-apt-get -y install vnstat
-vnstat -u -i eth0
+# install vnstat gui
+cd /home/vps/public_html/
+wget https://raw.githubusercontent.com/daybreakersx/premscript/master/vnstat_php_frontend-1.5.1.tar.gz
+tar xf vnstat_php_frontend-1.5.1.tar.gz
+rm vnstat_php_frontend-1.5.1.tar.gz
+mv vnstat_php_frontend-1.5.1 vnstat
+cd vnstat
+sed -i "s/\$iface_list = array('eth0', 'sixxs');/\$iface_list = array('eth0');/g" config.php
+sed -i "s/\$language = 'nl';/\$language = 'en';/g" config.php
+sed -i 's/Internal/Internet/g' config.php
+sed -i '/SixXS IPv6/d' config.php
+cd
+
+# install fail2ban
+apt-get -y install fail2ban
+service fail2ban restart
 
 # Install OpenVPN
-wget -O /etc/openvpn/openvpn.tar "https://github.com/nwqionnwkn/OPENEXTRA/raw/master/Config/openvpn.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/openvpn.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
 cat > /etc/openvpn/1194.conf <<END
@@ -245,7 +258,7 @@ service openvpn restart
 # Setting Port SSH
 cd
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
+sed -i '/Port 443/a Port 443' /etc/ssh/sshd_config
 service ssh restart
 
 # Install Dropbear
@@ -258,11 +271,9 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 
-# Install Squid3
-cd
+# install squid3
 apt-get -y install squid3
-cat > /etc/squid3/squid.conf <<END
-acl manager proto cache_object
+cat > /etc/squid3/squid.conf <<-END
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 acl SSL_ports port 443
@@ -277,7 +288,7 @@ acl Safe_ports port 488
 acl Safe_ports port 591
 acl Safe_ports port 777
 acl CONNECT method CONNECT
-acl SSH dst xxxxxxxxx-xxxxxxxxx/255.255.255.255
+acl SSH dst xxxxxxxxx-xxxxxxxxx/32
 http_access allow SSH
 http_access allow manager localhost
 http_access deny manager
@@ -292,9 +303,18 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname openextra.net
+visible_hostname daybreakersx
 END
 sed -i $MYIP2 /etc/squid3/squid.conf;
+service squid3 restart
+
+# install stunnel4
+apt-get -y install stunnel4
+wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/ZENON-VPN/autoscript/master/updates/stunnel.pem"
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/ZENON-VPN/autoscript/master/req/stunnel.conf"
+sed -i $MYIP2 /etc/stunnel/stunnel.conf
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+service stunnel4 restart
 
 # install webmin
 cd
