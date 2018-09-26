@@ -29,7 +29,15 @@ if [[ $ether = "" ]]; then
         ether=eth0
 fi
 
+#SOURCE
+	source="http://เฮียเบิร์ด.com/ocspanel"
+#vps="VPS";
 
+#if [[ $vps = "VPS" ]]; then
+#	source="http://ocspanel.info"
+#else
+#	source="http://เฮียเบิร์ด.com/ocspanel"
+#fi
 
 
 # GO TO ROOT
@@ -66,9 +74,20 @@ clear
 	echo ""
 	echo -e "\e[034;1m----SCRIPT V.1 VIP"
 	echo ""
-
-
-
+	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
+	echo ""
+read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
+wget -q -O /usr/bin/pass zenon/config.txt
+if ! grep -w -q $passwds /usr/bin/pass; then
+clear
+echo ""
+echo ""
+echo " เสียใจด้วย รหัสผิดว่ะ ถ้าไม่มีรหัสติดต่อแอดมินฯ เฮียเบิร์ด"
+echo ""
+echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
+echo ""
+echo ""
+fi
 
 # Disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
@@ -92,8 +111,8 @@ deb http://packages.dotdeb.org wheezy all
 deb http://download.webmin.com/download/repository sarge contrib
 deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 END
-wget "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/dotdeb.gpg"
-wget "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/jcameron-key.asc"
+wget "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/dotdeb.gpg"
+wget "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
@@ -108,7 +127,7 @@ apt-get -y install nano iptables dnsutils openvpn screen whois ngrep unzip unrar
 
 # Install Screenfetch
 cd
-wget -O /usr/bin/screenfetch "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/screenfetch"
+wget -O /usr/bin/screenfetch "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/screenfetch"
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
@@ -282,8 +301,8 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 
 # Install Script
 cd /usr/local/bin
-wget wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/menu
-wget wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/speedtest
+wget https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/menu
+wget https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/speedtest
 chmod +x menu
 chmod +x speedtest
 echo ""
