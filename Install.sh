@@ -29,15 +29,7 @@ if [[ $ether = "" ]]; then
         ether=eth0
 fi
 
-#SOURCE
-	source="http://เฮียเบิร์ด.com/ocspanel"
-#vps="VPS";
 
-#if [[ $vps = "VPS" ]]; then
-#	source="http://ocspanel.info"
-#else
-#	source="http://เฮียเบิร์ด.com/ocspanel"
-#fi
 
 
 # GO TO ROOT
@@ -99,8 +91,8 @@ deb http://packages.dotdeb.org wheezy all
 deb http://download.webmin.com/download/repository sarge contrib
 deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 END
-wget "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/dotdeb.gpg"
-wget "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/jcameron-key.asc"
+wget "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/dotdeb.gpg"
+wget "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
@@ -115,7 +107,7 @@ apt-get -y install nano iptables dnsutils openvpn screen whois ngrep unzip unrar
 
 # Install Screenfetch
 cd
-wget -O /usr/bin/screenfetch "https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/screenfetch"
+wget -O /usr/bin/screenfetch "wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/screenfetch"
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
@@ -289,8 +281,8 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 
 # Install Script
 cd /usr/local/bin
-wget https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/menu
-wget https://raw.githubusercontent.com/nwqionnwkn/OPENEXTRA/master/Config/speedtest
+wget wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/menu
+wget wget https://raw.githubusercontent.com/ZENON-VPN/c/master/Config/speedtest
 chmod +x menu
 chmod +x speedtest
 echo ""
