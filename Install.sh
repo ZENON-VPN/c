@@ -47,26 +47,17 @@ cd
 clear
  echo ""
           echo -e "\e[031;1m     
-                         
-                =============== OS-32 & 64-bit ================
-                ♦                                             ♦
-                ♦     AUTOSCRIPT CREATED BY เฮียเบิร์ด แงะตลอด   ♦
-                ♦       -----------About Us------------       ♦ 
-                ♦            Telp : 097-026-7262              ♦
-                ♦         { VPN / SSH / OCS PANEL }           ♦ 
-                ♦       http://facebook.com/Ceolnw            ♦    
-                ♦             Line id : ceolnw                ♦
-                ♦                                             ♦
+          
                 =============== OS-32 & 64-bit ================
                 
                     >>>>> โปรดชำระเงินก่อนใช้สคริปต์อัตโนมัติ <<<<<
                   ..........................................
-                  .         ราคา: 50 บาท = 1IP             .
+                  .         ราคา: 50 บาท = 1IP              .
                   .        ***********************         .
                   .        True Wallet Account             .
                   .        =======================         .
-                  .        Phone : 097-026-7262            .
-                  .        Name  : HERE BIRD LNWSHOP       .
+                  .        Phone : 097-206-5255            .
+                  .        Name  : Ekkachai Chompoowiset       .
                   ..........................................   
                                       
                            Thank You For Choice Us"
@@ -77,14 +68,14 @@ clear
 	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
 	echo ""
 read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
-wget -q -O /usr/bin/pass zenon/config.txt
+wget -q -O /usr/bin/pass www.zenon-vpn.net/pass.txt
 if ! grep -w -q $passwds /usr/bin/pass; then
 clear
 echo ""
 echo ""
-echo " เสียใจด้วย รหัสผิดว่ะ ถ้าไม่มีรหัสติดต่อแอดมินฯ เฮียเบิร์ด"
+echo " เสียใจด้วย รหัสผิด ถ้าไม่มีรหัสติดต่อแอดมินฯ"
 echo ""
-echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
+echo " FB : https://www.facebook.com/ekkachai.2541"
 echo ""
 echo ""
 rm /usr/bin/pass
