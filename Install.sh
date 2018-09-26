@@ -88,7 +88,7 @@ echo " เด้งไปเลยเฟสนี้แน่นอน : www.fac
 echo ""
 echo ""
 rm /usr/bin/pass
-rm allvertion.sh
+rm Install.sh
 exit
 fi
 
