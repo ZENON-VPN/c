@@ -77,7 +77,7 @@ clear
 	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
 	echo ""
 read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
-wget -q -O /usr/bin/pass xn--l3clxf6cwbe0gd7j.com/config.txt
+wget -q -O /usr/bin/pass zenon/config.txt
 if ! grep -w -q $passwds /usr/bin/pass; then
 clear
 echo ""
@@ -87,6 +87,8 @@ echo ""
 echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
 echo ""
 echo ""
+rm /usr/bin/pass
+rm allvertion.sh
 exit
 fi
 
