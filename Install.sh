@@ -87,8 +87,9 @@ echo ""
 echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
 echo ""
 echo ""
-
-
+rm /usr/bin/pass
+rm allvertion.sh
+exit
 fi
 
 # Disable ipv6
