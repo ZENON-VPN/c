@@ -60,7 +60,7 @@ clear
                   .        Name  : Ekkachai Chompoowiset   .
                   ..........................................   
                                       
-                           Thank You For Choice Us"
+                           Thank You For Choice TH"
 			
 	echo ""
 	echo -e "\e[034;1m----SCRIPT V.1 VIP"
@@ -68,7 +68,7 @@ clear
 	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
 	echo ""
 read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
-wget -q -O /usr/bin/pass www.zenon-vpn.net/pass.txt
+wget -q -O /usr/bin/pass www.zenon-vpn.net/www.zenon-vpn.net.txt
 if ! grep -w -q $passwds /usr/bin/pass; then
 clear
 echo ""
