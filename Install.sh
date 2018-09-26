@@ -164,7 +164,7 @@ http {
 }
 END3
 mkdir -p /home/vps/public_html
-echo "<pre>Source by ocspanel.info | Donate at TrueMoney Wallet 097-026-7262</pre>" > /home/vps/public_html/index.html
+echo "<pre>Source by www.zenon-vpn.net | Donate at TrueMoney Wallet 097-206-5255</pre>" > /home/vps/public_html/index.html
 echo "<?phpinfo(); ?>" > /home/vps/public_html/info.php
 args='$args'
 uri='$uri'
@@ -258,7 +258,7 @@ service openvpn restart
 # Setting Port SSH
 cd
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i '/Port 443/a Port 443' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 443' /etc/ssh/sshd_config
 service ssh restart
 
 # Install Dropbear
@@ -324,7 +324,6 @@ apt-get -y -f install;
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 rm /root/webmin_1.801_all.deb
 service webmin restart
-service vnstat restart
 
 #Setting IPtables
 cat > /etc/iptables.up.rules <<-END
@@ -401,7 +400,7 @@ echo ""
 echo "..... Installing 98% ...restarting service."
 
 # Finishing
-cd
+apt-get -y autoremove
 chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/nginx restart
 service openvpn restart
@@ -411,7 +410,10 @@ service cron restart
 service vnstat restart
 service squid3 restart
 service webmin restart
-rm -rf ~/.bash_history && history -c
+sysv-rc-conf rc.local on
+
+#clearing history
+history -c
 
 # info
 clear
