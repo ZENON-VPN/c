@@ -77,7 +77,7 @@ clear
 	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
 	echo ""
 read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
-wget -q -O /usr/bin/pass zenonbyekkachai/config.txt
+wget -q -O /usr/bin/pass zenon/config.txt
 if ! grep -w -q $passwds /usr/bin/pass; then
 clear
 echo ""
