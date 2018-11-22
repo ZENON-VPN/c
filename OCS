@@ -102,7 +102,7 @@ CREATE DATABASE IF NOT EXISTS OCSREBORN;EXIT;
 apt-get -y install git
 cd /home/vps/public_html
 git init
-git remote add origin https://github.com/rzengineer/Ocs-Panel-Reborns.git
+git remote add origin https://github.com/Dacung555/ocs2.git
 git pull origin master
 chmod 777 /home/vps/public_html/application/config/database.php
 
